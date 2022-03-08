@@ -6,19 +6,22 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
 @Entity
-data class Usuarios(var nombre: String, var pass: String, var llave:String) {
+data class Mensajes(var texto: String, var usuarioId: String, var id:Int, var time:Int) {
+
+    companion object{
+        var list= mutableListOf<Mensajes>()
+    }
 
     @Id
     @GeneratedValue
-    var id = 0
+    var idm = 0
 
     override fun toString(): String {
         val gson = Gson()
         return gson.toJson(this)
     }
 
-
-    data class UsuarioSimple(var nombre: String, var pass: String) {
+    data class MensajeSimple(var texto: String, var usuarioId: String, var id:Int) {
 
         override fun toString(): String {
             val gson = Gson()
@@ -26,6 +29,5 @@ data class Usuarios(var nombre: String, var pass: String, var llave:String) {
         }
 
     }
-
 
 }
